@@ -9,6 +9,7 @@ var xss = require('xss-clean');
 import helmet from 'helmet';
 
 dotenv.config();
+const port=process.env.port||3000;
 
 mongoose
   .connect(process.env.MONGODB_URI || "")
@@ -34,8 +35,8 @@ app.use(bodyParser.json());
 /** Routes goes here */
 app.use(BlogRoutes);
 
-app.listen(process.env.port, () => {
-  console.log(`express running on port ${process.env.port}`);
+app.listen(port, () => {
+  console.log(`express running on port ${port}`);
 });
 
 export default app;
